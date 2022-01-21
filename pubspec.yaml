@@ -28,7 +28,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.fluwx_worker
+        package: com.tencent.fluwx_worker
         pluginClass: FluwxWorkerPlugin
       ios:
         pluginClass: FluwxWorkerPlugin

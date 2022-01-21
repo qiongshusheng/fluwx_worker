@@ -1,4 +1,4 @@
-group 'com.example.fluwx_worker'
+group 'com.tencent.fluwx_worker'
 version '1.0'
 
 buildscript {

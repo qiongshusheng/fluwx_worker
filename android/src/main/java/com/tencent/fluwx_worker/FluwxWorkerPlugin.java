@@ -1,4 +1,4 @@
-package com.example.fluwx_worker;
+package com.tencent.fluwx_worker;
 
 import androidx.annotation.NonNull;
 
