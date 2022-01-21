@@ -74,6 +74,14 @@ class _MyAppState extends State<MyApp> {
               },
               child: const Text('分享到小程序'),
             ),
+            TextButton(
+              onPressed: () {
+                fluwxWorker.shareToWeChat(fluwxWorker.WeChatShareTextModel(
+                  text: '分享文字到企业微信',
+                ));
+              },
+              child: const Text('分享文字'),
+            ),
           ],
         ),
       ),

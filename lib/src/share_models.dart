@@ -1,6 +1,5 @@
 import 'wechat_file.dart';
 
-const String _source = "source";
 const String _appPkg = "appPkg";
 const String _appName = "appName";
 const String _appId = "appId";
@@ -12,14 +11,14 @@ mixin WeChatShareBaseModel {
 }
 
 class WeChatShareTextModel implements WeChatShareBaseModel {
-  final String source;
+  final String text;
   final String? appPkg;
   final String? appName;
   final String? appId; //企业唯一标识。创建企业后显示在，我的企业 CorpID字段
   final String? agentId; //应用唯一标识。显示在具体应用下的 AgentId字段
 
   WeChatShareTextModel({
-    required this.source,
+    required this.text,
     this.appPkg,
     this.appName,
     this.appId,
@@ -29,7 +28,7 @@ class WeChatShareTextModel implements WeChatShareBaseModel {
   @override
   Map toMap() {
     return {
-      _source: source,
+      'text': text,
       _appPkg: appPkg,
       _appName: appName,
       _appId: appId,
@@ -197,7 +196,7 @@ class WeChatShareMiniProgramModel implements WeChatShareBaseModel {
       'path': path,
       'title': title,
       'description': description,
-      'hdImageData': hdImageData,
+      'hdImageData': hdImageData?.toMap(),
       _appPkg: appPkg,
       _appName: appName,
       _appId: appId,
