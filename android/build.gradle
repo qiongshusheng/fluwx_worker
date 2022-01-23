@@ -16,6 +16,9 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
+        flatDir{
+            dirs project(':fluwx_worker').file('libs')
+        }
     }
 }
 
@@ -32,4 +35,8 @@ android {
     defaultConfig {
         minSdkVersion 16
     }
+}
+
+dependencies{
+    implementation(name:'lib_wwapi-2.0.12.6',ext:'aar')
 }
