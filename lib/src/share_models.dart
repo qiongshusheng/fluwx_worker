@@ -197,7 +197,7 @@ class WeChatShareMiniProgramModel implements WeChatShareBaseModel {
       'path': path,
       'title': title,
       'description': description,
-      'hdImageData': hdImageData,
+      'hdImageData': hdImageData?.toMap(),
       _appPkg: appPkg,
       _appName: appName,
       _appId: appId,

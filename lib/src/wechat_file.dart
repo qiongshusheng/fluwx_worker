@@ -24,27 +24,30 @@ class WeChatFile {
   final String suffix;
 
   /// [source] must begin with http or https
-  WeChatFile.network(this.source, {String? suffix})
+  WeChatFile.network(String source, {String? suffix})
       : assert(source.startsWith("http")),
-        schema = FileSchema.NETWORK,
-        suffix = source.readSuffix(suffix, defaultSuffixTxt);
+        this.source = source,
+        this.schema = FileSchema.NETWORK,
+        this.suffix = source.readSuffix(suffix, defaultSuffixTxt);
 
   ///[source] path of the image, like '/asset/image.pdf?package=flutter',
   ///the query param package in [source] only available when you want to specify the package of image
-  WeChatFile.asset(this.source, {String? suffix})
+  WeChatFile.asset(String source, {String? suffix})
       : assert(source.trim().isNotEmpty),
-        schema = FileSchema.ASSET,
-        suffix = source.readSuffix(suffix, defaultSuffixTxt);
+        this.source = source,
+        this.schema = FileSchema.ASSET,
+        this.suffix = source.readSuffix(suffix, defaultSuffixTxt);
 
   WeChatFile.file(File source, {String suffix = defaultSuffixTxt})
-      : source = source.path,
-        schema = FileSchema.FILE,
-        suffix = source.path.readSuffix(suffix, defaultSuffixTxt);
+      : this.source = source.path,
+        this.schema = FileSchema.FILE,
+        this.suffix = source.path.readSuffix(suffix, defaultSuffixTxt);
 
-  WeChatFile.binary(this.source, {String suffix = defaultSuffixTxt})
+  WeChatFile.binary(Uint8List source, {String suffix = defaultSuffixTxt})
       : assert(suffix.trim().isNotEmpty),
-        schema = FileSchema.BINARY,
-        suffix = suffix;
+        this.source = source,
+        this.schema = FileSchema.BINARY,
+        this.suffix = suffix;
 
   Map toMap() => {"source": source, "schema": schema.index, "suffix": suffix};
 }

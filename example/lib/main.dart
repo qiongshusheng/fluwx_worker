@@ -15,12 +15,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _result = 'None';
 
-  final schema = 'wwauth1e933be11645237c000012'; //替换成自己的
-  final corpId = 'WW1e933be11645237c';
-  final agentId = '1000012';
+  final schema = 'xxxxxxxxxxxxxxxx'; //替换成自己的
+  final corpId = 'xxxxxxx';
+  final agentId = 'xxxxx';
 
   final miniprogramPath = '/pages/index/index';
-  final username = ''; // 小程序原始id
+  final username = 'xxxxxxxx@app'; // 小程序原始id
 
   @override
   void initState() {
@@ -65,14 +65,23 @@ class _MyAppState extends State<MyApp> {
             ),
             TextButton(
               onPressed: () {
-                fluwxWorker
-                    .shareToWeChat(fluwxWorker.WeChatShareMiniProgramModel(
-                  title: '分享到小程序',
-                  path: miniprogramPath,
-                  username: username,
-                ));
+                fluwxWorker.shareToWeChat(fluwxWorker.WeChatShareMiniProgramModel(
+                    title: '分享到小程序',
+                    path: miniprogramPath,
+                    username: username,
+                    hdImageData: fluwxWorker.WeChatImage.network(
+                        'http://pic.616pic.com/ys_bnew_img/00/06/27/TWk2P5YJ5k.jpg',
+                        suffix: '.jpg')));
               },
               child: const Text('分享到小程序'),
+            ),
+            TextButton(
+              onPressed: () {
+                fluwxWorker.shareToWeChat(fluwxWorker.WeChatShareTextModel(
+                  source: '分享文字',
+                ));
+              },
+              child: const Text('分享文字'),
             ),
           ],
         ),
